@@ -1,0 +1,48 @@
+py-ovs
+======
+Simple voting system using Python and PyQt GUI
+library. It uses MongoDB for its database.
+
+Installation
+============
+1. Clone the repository
+2. I highly suggests that you create a virtual environment
+   inside the repo
+
+   Run the following:
+   -------------------- 
+   python -m venv .venv
+   --------------------
+   
+   To activate the virtual environment,
+   
+   Run the following
+   If using windows command-line:
+   --------------------------
+   .venv\Scripts\activate
+   --------------------------
+   
+   If using Linux/UNIX-like environment:
+   -------------------------
+   source .venv/bin/activate
+   -------------------------
+
+3. Install the requirements by running
+   -------------------------------
+   pip install -r requirements.txt
+   -------------------------------
+
+4. Inside the src folder, change the .env.example name to
+   ".env" and change the value of MONGO_URI inside of it
+   to your MongoDB URI [1].
+
+
+License
+=======
+Distributed under the MIT License.
+See LICENSE file for more information.
+
+
+[1] Visit the link for more info on MongoDB URI:
+    https://www.mongodb.com/docs/manual/reference/connection-string/
+
