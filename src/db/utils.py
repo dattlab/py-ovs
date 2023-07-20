@@ -1,5 +1,6 @@
 # Third party modules
-import pymongo as mongo
+import pymongo
+import pymongo.database
 
 # User modules
 from .config import (
@@ -9,7 +10,7 @@ from .config import (
 )
 
 
-def get_database(db_name: str = DB_NAME) -> mongo.database.Database:
+def get_database(db_name: str = DB_NAME) -> pymongo.database.Database:
     """
     Connects to a MongoClient with provided Mongo
     URI connection string and returns a database
@@ -23,21 +24,19 @@ def get_database(db_name: str = DB_NAME) -> mongo.database.Database:
     mongo.database.Database
 
     """
-    client = mongo.MongoClient(MONGO_URI)
+    client = pymongo.MongoClient(MONGO_URI)
 
     return client[db_name]
 
 
-def get_collection(
-        collection_name: str,
-        db_name = DB_NAME
-    ) -> mongo.collection.Collection:
+def get_collection(collection_name: str, db_name=DB_NAME) -> pymongo.collection.Collection:
     """
     Get a collection from a given database name
 
     Parameters
     ----------
     collection_name : str
+    db_name: str
 
     Returns
     -------
@@ -71,7 +70,7 @@ def is_username_taken(input_username: str) -> bool:
 
     Parameters
     ----------
-    data_list : dict
+    input_username: str
 
     Returns
     -------
@@ -81,8 +80,5 @@ def is_username_taken(input_username: str) -> bool:
 
     user_collection = get_collection(USER_COLLECTION_NAME)
 
-    return True if user_collection.find_one({
-                    'username': input_username
-                }) \
-                else False
-
+    return True if user_collection.find_one({'username': input_username}) \
+        else False
