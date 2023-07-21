@@ -1,10 +1,24 @@
 [
   {
+    "name": "User 1",
     "username": "user1",
-    "passwd": "123456"
+    "passwd": "123456",
+    "vote_history": [
+      {
+        "poll_name": "poll1",
+        "chosen_candidate": "Candidate 1"
+      }
+    ]
   },
   {
+    "name": "User 2",
     "username": "user2",
-    "passwd": "789012"
+    "passwd": "789012",
+    "vote_history": [
+      {
+        "poll_name": "poll1",
+        "chosen_candidate": "Candidate 2"
+      }
+    ]
   }
 ]
