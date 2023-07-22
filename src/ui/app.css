@@ -1,0 +1,197 @@
+ErrorScreen {
+    align: center middle;
+}
+
+.container-parent {
+    margin: 1;
+}
+
+.screen-title {
+    margin-top: 1;
+    text-align: center;
+    width: 100%;
+}
+
+.btn {
+    width: 100%;
+    margin-bottom: 1;
+}
+
+.form-label {
+    text-align: right;
+    width: 100%;
+}
+
+.form-input {
+    column-span: 2;
+}
+
+.position-card {
+    column-span: 3;
+    border: solid gray;
+    layout: grid;
+    grid-size: 3 1;
+    padding-left: 1;
+    padding-right: 1;
+}
+
+.position-card__info {
+    column-span: 2;
+}
+
+.view-btn {
+    width: 100%;
+}
+
+.search-box {
+    width: 100%;
+    layout: grid;
+    grid-size: 2 1;
+    column-span: 2;
+    margin-top: 1;
+    margin-right: 3;
+}
+
+#btn-search-box,
+.search-box-input {
+    width: 100%;
+}
+
+.space {
+    column-span: 2;
+}
+
+.candidate-list__item {
+    column-span: 3;
+    layout: grid;
+    grid-size: 2 1;
+    grid-columns: 1fr 5fr;
+    grid-gutter: 1;
+}
+
+.candidate-list__name {
+    border: tall gray;
+    text-align: left;
+    padding-left: 1;
+    padding-right: 1;
+    width: 100%;
+}
+
+.candidate-list__vote-count {
+    border: tall yellow;
+    text-align: center;
+    padding-left: 1;
+    padding-right: 1;
+    width: 100%;
+}
+
+.user-result-details {
+    layout: grid;
+    grid-size: 3 1;
+    grid-columns: 1fr 3fr 2fr;
+    column-span: 2;
+}
+
+.user-result-details__item {
+    border: solid gray;
+    text-align: center;
+    width: 100%;
+}
+
+#user-result-details__id {
+    border: solid yellow;
+}
+
+.user-voted-candidates {
+    layout: grid;
+    column-span: 2;
+    grid-size: 2 4;
+    grid-columns: 1fr 5fr;
+}
+
+#user-voted-candidates__title {
+    column-span: 2;
+}
+
+.user-voted-candidate__item {
+    border: solid gray;
+    text-align: left;
+    width: 100%;
+    padding-left: 1;
+    padding-right: 1;
+}
+
+#login-form {
+    margin-top: 1;
+    layout: grid;
+    grid-size: 3 3;
+    grid-gutter: 1;
+}
+
+#register-form {
+    margin-top: 1;
+    layout: grid;
+    grid-size: 3 5;
+    grid-gutter: 1;
+}
+
+#position-list {
+    margin-top: 1;
+    layout: grid;
+    grid-size: 3 4;
+}
+
+#candidate-list {
+    layout: grid;
+    grid-size: 3 6;
+    margin-left: 10;
+    margin-right: 10;
+}
+
+#search-result-details {
+    layout: grid;
+    grid-size: 2 3;
+    grid-rows: 1fr 3fr 1fr;
+}
+
+#btn-quit-search-result {
+    margin-top: 1;
+}
+
+#btn-logout {
+    margin-top: 1;
+    width: 100%;
+    column-span: 1;
+}
+
+#btn-back {
+    margin-top: 2;
+}
+
+#btn_continue_login,
+#btn_continue_register {
+    column-span: 2;
+}
+
+#question {
+    column-span: 2;
+    height: 1fr;
+    width: 1fr;
+    content-align: center middle;
+}
+
+#dialog {
+    grid-size: 2;
+    grid-gutter: 1 2;
+    grid-rows: 1fr 3;
+    padding: 0 1;
+    width: 60;
+    height: 11;
+    border: thick $background 80%;
+    background: $surface;
+}
+
+#btn-retry {
+    column-span: 2;
+    width: 100%;
+}
