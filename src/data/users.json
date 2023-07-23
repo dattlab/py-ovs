@@ -3,6 +3,7 @@
     "name": "User 1",
     "username": "user1",
     "passwd": "123456",
+    "voter_id": 45652,
     "is_admin": false,
     "vote_history": [
       {
@@ -15,6 +16,7 @@
     "name": "User 2",
     "username": "user2",
     "passwd": "789012",
+    "voter_id": 76433,
     "is_admin": false,
     "vote_history": [
       {
