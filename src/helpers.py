@@ -39,6 +39,11 @@ def sort_candidate_result(candidate_list: list[tuple], lo: int, hi: int) -> None
     sort_candidate_result(candidate_list, p + 1, hi)
 
 
+def find_voter(voter_id: int):
+    # TODO: Implement binary search for finding a voter with their voter's id
+    ...
+
+
 def encrypt_passwd(passwd: str) -> str:
     # Converts the input password into byte
     # string and hash it using bcrypt
