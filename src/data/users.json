@@ -3,6 +3,7 @@
     "name": "User 1",
     "username": "user1",
     "passwd": "123456",
+    "is_admin": false,
     "vote_history": [
       {
         "poll_name": "poll1",
@@ -14,11 +15,18 @@
     "name": "User 2",
     "username": "user2",
     "passwd": "789012",
+    "is_admin": false,
     "vote_history": [
       {
         "poll_name": "poll1",
         "chosen_candidate": "Candidate 2"
       }
     ]
+  },
+  {
+    "name": "Admin User",
+    "username": "admin",
+    "passwd": "12345678",
+    "is_admin": true
   }
 ]
