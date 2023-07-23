@@ -1,6 +1,6 @@
 py-ovs
 ======
-Simple voting system using Python and PyQt GUI
+Simple voting system using Python and Textual
 library. It uses MongoDB for its database.
 
 Installation
