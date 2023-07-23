@@ -4,23 +4,23 @@
     "candidates": [
       {
         "candidate_name": "John Doe",
-        "vote_count": 5
+        "vote_count": 0
       },
       {
         "candidate_name": "Jane Doe",
-        "vote_count": 7
+        "vote_count": 0
       },
       {
         "candidate_name": "Ann Doe",
-        "vote_count": 8
+        "vote_count": 0
       },
       {
         "candidate_name": "Deal Doe",
-        "vote_count": 1
+        "vote_count": 0
       },
       {
         "candidate_name": "Mann Doe",
-        "vote_count": 2
+        "vote_count": 0
       }
     ]
   },
@@ -42,12 +42,16 @@
       {
         "candidate_name": "John Santos",
         "vote_count": 0
+      },
+      {
+        "candidate_name": "Samuel Johnson",
+        "vote_count": 0
       }
     ]
   },
   {
     "position_name": "Secretary",
-    "candidate": [
+    "candidates": [
       {
         "candidate_name": "Samuel Diaz",
         "vote_count": 0
@@ -62,6 +66,10 @@
       },
       {
         "candidate_name": "Lea Sanchez",
+        "vote_count": 0
+      },
+      {
+        "candidate_name": "Mina Santiago",
         "vote_count": 0
       }
     ]
