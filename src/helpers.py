@@ -64,3 +64,7 @@ def passwd_match(input_passwd: str, expected: str) -> bool:
     expected = expected.encode("UTF-8")
 
     return bcrypt.checkpw(input_passwd, expected)
+
+
+def inputs_empty(*args):
+    return True if "" in args else False

@@ -25,8 +25,6 @@ class DBUtils:
         self.position_collection = self.db[position_collection_name]
 
     def add_new_user(self, name: str, username: str, passwd: str) -> None:
-        global voter_id
-
         voter_id_in_db = self.get_all_voters_id()
 
         if not self.username_in_db(username):
@@ -34,17 +32,18 @@ class DBUtils:
 
             # Create random 5-digit voter ID
             voter_id_already_in_db = True
+            voter_id = 0
             while voter_id_already_in_db:
                 voter_id = random.randint(10000, 99999)
                 if voter_id not in voter_id_in_db:
                     voter_id_already_in_db = False
 
             self.user_collection.insert_one({
-                "name"        : name,
-                "username"    : username,
-                "passwd"      : passwd,
-                "voter_id"    : voter_id,
-                "is_admin"    : False,
+                "name": name,
+                "username": username,
+                "passwd": passwd,
+                "voter_id": voter_id,
+                "is_admin": False,
                 "vote_history": []
             })
 
@@ -52,7 +51,7 @@ class DBUtils:
         if self.position_exists(position_name):
             new_candidate = {
                 "candidate_name": candidate_name,
-                "vote_count"    : 0
+                "vote_count": 0
             }
 
             pos = self.position_collection.find_one({"position_name": position_name})
@@ -70,12 +69,12 @@ class DBUtils:
 
     def update_candidate_vote_count(self, position_name: str, candidate_name: str) -> None:
         pos = self.position_collection.find_one({
-            "position_name"            : position_name,
+            "position_name": position_name,
             "candidates.candidate_name": candidate_name
         })
 
         self.position_collection.update_one({
-            "_id"                      : pos["_id"],
+            "_id": pos["_id"],
             "candidates.candidate_name": candidate_name
         }, {
             "$inc": {
@@ -91,7 +90,7 @@ class DBUtils:
         vote_history = candidate["vote_history"]
 
         vote_history.append({
-            "pos_name"        : position_name,
+            "pos_name": position_name,
             "chosen_candidate": candidate_name
         })
 
@@ -115,6 +114,14 @@ class DBUtils:
 
         return voter_id_list
 
+    def get_user_vote_for_pos(self, username: str, position: str) -> None:
+        user_data = self.user_collection.find_one({"username": username})
+        vote_history = user_data["vote_history"]
+
+        for vote in vote_history:
+            if vote["pos_name"] == position:
+                return vote["chosen_candidate"]
+
     def import_collection_from_json(self, json_file_path: str, collection_name: str) -> None:
         with open(json_file_path, "r") as f:
             documents = json.loads(f.read())
@@ -126,6 +133,9 @@ class DBUtils:
         self.position_collection.delete_many({})
 
     def user_already_voted(self, position_name: str, username: str) -> bool:
+        if username == "admin":
+            return False
+
         user_vote_history = self.user_collection.find_one({"username": username})
 
         # List of positions where the user already voted in
