@@ -1,0 +1,69 @@
+[
+  {
+    "position_name": "President",
+    "candidates": [
+      {
+        "candidate_name": "John Doe",
+        "vote_count": 5
+      },
+      {
+        "candidate_name": "Jane Doe",
+        "vote_count": 7
+      },
+      {
+        "candidate_name": "Ann Doe",
+        "vote_count": 8
+      },
+      {
+        "candidate_name": "Deal Doe",
+        "vote_count": 1
+      },
+      {
+        "candidate_name": "Mann Doe",
+        "vote_count": 2
+      }
+    ]
+  },
+  {
+    "position_name": "Vice President",
+    "candidates": [
+      {
+        "candidate_name": "Juan Dela Cruz",
+        "vote_count": 0
+      },
+      {
+        "candidate_name": "Maria Clara",
+        "vote_count": 0
+      },
+      {
+        "candidate_name": "Mark Cruz",
+        "vote_count": 0
+      },
+      {
+        "candidate_name": "John Santos",
+        "vote_count": 0
+      }
+    ]
+  },
+  {
+    "position_name": "Secretary",
+    "candidate": [
+      {
+        "candidate_name": "Samuel Diaz",
+        "vote_count": 0
+      },
+      {
+        "candidate_name": "Manuel Santos",
+        "vote_count": 0
+      },
+      {
+        "candidate_name": "Daniel Cruz",
+        "vote_count": 0
+      },
+      {
+        "candidate_name": "Lea Sanchez",
+        "vote_count": 0
+      }
+    ]
+  }
+]
