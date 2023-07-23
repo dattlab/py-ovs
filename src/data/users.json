@@ -6,10 +6,6 @@
     "voter_id": 45652,
     "is_admin": false,
     "vote_history": [
-      {
-        "poll_name": "poll1",
-        "chosen_candidate": "Candidate 1"
-      }
     ]
   },
   {
@@ -19,10 +15,6 @@
     "voter_id": 76433,
     "is_admin": false,
     "vote_history": [
-      {
-        "poll_name": "poll1",
-        "chosen_candidate": "Candidate 2"
-      }
     ]
   },
   {
