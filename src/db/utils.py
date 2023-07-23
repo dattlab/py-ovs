@@ -14,11 +14,11 @@ from src.config import (
 
 class DBUtils:
     def __init__(
-        self,
-        mongo_uri: str = MONGO_URI,
-        db_name: str = DB_NAME,
-        user_collection_name: str = USER_COLLECTION_NAME,
-        position_collection_name: str = POS_COLLECTION_NAME
+            self,
+            mongo_uri: str = MONGO_URI,
+            db_name: str = DB_NAME,
+            user_collection_name: str = USER_COLLECTION_NAME,
+            position_collection_name: str = POS_COLLECTION_NAME
     ) -> None:
         self.db = pymongo.MongoClient(mongo_uri)[db_name]
         self.user_collection = self.db[user_collection_name]
@@ -40,19 +40,19 @@ class DBUtils:
                     voter_id_already_in_db = False
 
             self.user_collection.insert_one({
-                "name": name,
-                "username": username,
-                "passwd": passwd,
-                "voter_id": voter_id,
-                "is_admin": False,
+                "name"        : name,
+                "username"    : username,
+                "passwd"      : passwd,
+                "voter_id"    : voter_id,
+                "is_admin"    : False,
                 "vote_history": []
             })
 
-    def add_new_candidate(self, position_name:str, candidate_name: str) -> None:
+    def add_new_candidate(self, position_name: str, candidate_name: str) -> None:
         if self.position_exists(position_name):
             new_candidate = {
                 "candidate_name": candidate_name,
-                "vote_count": 0
+                "vote_count"    : 0
             }
 
             pos = self.position_collection.find_one({"position_name": position_name})
@@ -70,12 +70,12 @@ class DBUtils:
 
     def update_candidate_vote_count(self, position_name: str, candidate_name: str) -> None:
         pos = self.position_collection.find_one({
-            "position_name": position_name,
+            "position_name"            : position_name,
             "candidates.candidate_name": candidate_name
         })
 
         self.position_collection.update_one({
-            "_id": pos["_id"],
+            "_id"                      : pos["_id"],
             "candidates.candidate_name": candidate_name
         }, {
             "$inc": {
@@ -91,7 +91,7 @@ class DBUtils:
         vote_history = candidate["vote_history"]
 
         vote_history.append({
-            "pos_name": position_name,
+            "pos_name"        : position_name,
             "chosen_candidate": candidate_name
         })
 
@@ -110,7 +110,7 @@ class DBUtils:
         users = list(self.user_collection.find({}))
         voter_id_list = []
         for user in users:
-            if user["is_admin"] == False:
+            if not user["is_admin"]:
                 voter_id_list.append(user["voter_id"])
 
         return voter_id_list
@@ -126,7 +126,7 @@ class DBUtils:
         self.position_collection.delete_many({})
 
     def user_already_voted(self, position_name: str, username: str) -> bool:
-        user_vote_history = self.user_collection.find_one({ "username": username })
+        user_vote_history = self.user_collection.find_one({"username": username})
 
         # List of positions where the user already voted in
         pos_voted = [v["pos_name"] for v in user_vote_history["vote_history"]]
@@ -137,7 +137,7 @@ class DBUtils:
         return False
 
     def user_is_admin(self, username: str) -> bool:
-        user = self.user_collection.find_one({ "username": username })
+        user = self.user_collection.find_one({"username": username})
         if user["is_admin"]:
             return True
         return False
