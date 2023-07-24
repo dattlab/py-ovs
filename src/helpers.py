@@ -4,7 +4,7 @@ import hashlib
 import bcrypt
 
 
-def sort_candidate_result(candidate_list: list[tuple], lo: int, hi: int) -> None:
+def sort_candidate_result(candidate_list: list[tuple], lo: int, hi: int, reverse=True) -> None:
     """
     Sort candidates based on their gathered votes
     using quicksort with Lomuto partition scheme
@@ -16,7 +16,7 @@ def sort_candidate_result(candidate_list: list[tuple], lo: int, hi: int) -> None
         i = low - 1
 
         for j in range(low, high):
-            if arr[j][1] >= pivot:
+            if arr[j][1] >= pivot if reverse else arr[j][1] <= pivot:
                 i += 1
 
                 temp = arr[j]
@@ -35,13 +35,22 @@ def sort_candidate_result(candidate_list: list[tuple], lo: int, hi: int) -> None
 
     p = partition(candidate_list, lo, hi)
 
-    sort_candidate_result(candidate_list, lo, p - 1)
-    sort_candidate_result(candidate_list, p + 1, hi)
+    sort_candidate_result(candidate_list, lo, p - 1, reverse)
+    sort_candidate_result(candidate_list, p + 1, hi, reverse)
 
 
-def find_voter(voter_id: int):
-    # TODO: Implement binary search for finding a voter with their voter's id
-    ...
+def find_voter(voter_id_list: list[tuple], target_voter_id: int, lo: int, hi: int):
+    while lo <= hi:
+        mid_idx = (hi + lo) // 2
+
+        if voter_id_list[mid_idx][1] == target_voter_id:
+            return voter_id_list[mid_idx]
+        elif voter_id_list[mid_idx][1] < target_voter_id:
+            lo = mid_idx + 1
+        else:
+            hi = mid_idx - 1
+
+    return -1
 
 
 def encrypt_passwd(passwd: str) -> str:

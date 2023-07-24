@@ -105,16 +105,16 @@ class DBUtils:
     def add_new_pos(self, position_data: dict) -> None:
         self.position_collection.insert_one(position_data)
 
-    def get_all_voters_id(self) -> list[int]:
+    def get_all_voters_id(self) -> list[tuple]:
         users = list(self.user_collection.find({}))
         voter_id_list = []
         for user in users:
             if not user["is_admin"]:
-                voter_id_list.append(user["voter_id"])
+                voter_id_list.append((user["username"], user["voter_id"]))
 
         return voter_id_list
 
-    def get_user_vote_for_pos(self, username: str, position: str) -> None:
+    def get_user_vote_for_pos(self, username: str, position: str) -> str:
         user_data = self.user_collection.find_one({"username": username})
         vote_history = user_data["vote_history"]
 

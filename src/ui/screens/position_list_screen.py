@@ -16,7 +16,10 @@ class PositionListScreen(Screen):
         super().__init__()
         self.loggedin_username = loggedin_username
         self.is_user_admin = is_user_admin
+
         self.db_utils = DBUtils()
+
+        self.input_voter_id = Input(classes="search-box-input")
 
     def compose(self) -> ComposeResult:
         yield Header()
@@ -53,7 +56,7 @@ class PositionListScreen(Screen):
                 if self.is_user_admin:
                     with Container(classes="search-box"):
                         yield Button("Check Voter's ID", id="btn-search-box")
-                        yield Input(classes="search-box-input")
+                        yield self.input_voter_id
                 else:
                     yield Label(" ", classes="space")
 
@@ -65,7 +68,7 @@ class PositionListScreen(Screen):
         if event.button.id == "btn-logout":
             self.app.pop_screen()
         if event.button.id == "btn-search-box":
-            self.app.push_screen(SearchResultScreen())
+            self.app.push_screen(SearchResultScreen(int(self.input_voter_id.value)))
 
         if event.button.id == "president-view-btn":
             self.app.switch_screen(CandidateListScreen("President", self.loggedin_username, self.is_user_admin))
